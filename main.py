@@ -1,14 +1,11 @@
 import evaluate
 import torch
 import numpy as np
-from datasets import load_dataset, DatasetDict, Dataset
+from datasets import load_dataset
 from peft.tuners import LoraConfig
-from peft.config import PeftConfig
-from peft.peft_model import PeftModel
 from peft.mapping import get_peft_model
 from transformers import (
     AutoTokenizer,
-    AutoConfig,
     AutoModelForSequenceClassification,
     DataCollatorWithPadding,
     TrainingArguments,
