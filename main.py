@@ -100,9 +100,10 @@ if __name__ == "__main__":
         compute_metrics=compute_metrics,
     )
     trainer.train()
+    model.to('cuda')
     print("=" * 30, "VALIDATE MODEL")
     for text in text_list:
-        inputs = tokenizer.encode(text, return_tensors="pt")
+        inputs = tokenizer.encode(text, return_tensors="pt").to('cuda')
         logits = model(inputs).logits
         predictions = torch.max(logits, 1).indices
         print(text + " - " + id_label[predictions.tolist()[0]])
